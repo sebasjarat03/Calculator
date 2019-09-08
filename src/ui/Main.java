@@ -1,5 +1,6 @@
 import java.util.*;
 public class Main{
+	public static final double PI = Math.PI;
 	public static double[] Memory = new double[10];
 		
 	
@@ -123,8 +124,35 @@ public class Main{
 				case "tan":
 						num = tan(n);
 					break;
+				case "sqrt":
+						num = sqrt(n);
+					break;
 				case "mem":
 						num = mem(n);
+					break;
+				case "pi":
+						num = PI;
+					break;
+				case "pow":
+						num = pow(n);
+					break;
+				case "fact":
+						num = fact(n);
+					break;
+				case "log":
+						num = log(n);
+					break;
+				case "logn":
+						num = logn(n);
+					break;
+				case "sqn":
+						num = sqn(n);
+					break;
+				case "radtodeg":
+						num = radtodeg(n);
+					break;
+				case "degtorad":
+						num = degtorad(n);
 					break;
 			}
 		}
@@ -204,6 +232,66 @@ public class Main{
 		double b = Math.toRadians(a);
 		double c = Math.tan(b);
 		
+		return c;
+	}
+	//method for square root
+	public static double sqrt(Scanner n){
+		double a = n.nextDouble();
+		double b;
+		double c = a/2;
+		do{
+			b = c;
+			c = (b + (a / b)) / 2;
+		} while ((b - c) !=0);
+		return c;
+	}
+	//method for power
+	public static double pow(Scanner n){
+		double a = n.nextDouble();
+		double b = n.nextDouble();
+		double c = 1;
+		for(int i= 1; i<=b; i++){
+			c = c * a;
+		}
+		return c;
+	}
+	//method for factorial
+	public static double fact(Scanner n){
+		double a = n.nextDouble();
+		double c = 1;
+		for (int i= 1; i<=a; i++){
+			c *=i;
+		}
+		return c;
+	}
+	//method for log10
+	public static double log(Scanner n){
+		double a = n.nextDouble();
+		double c = Math.log10(a);
+		return c;
+	}
+	//method for log n-base
+	public static double logn(Scanner n){
+		double a = n.nextDouble();
+		double b = n.nextDouble();
+		double c = Math.log10(a)/Math.log10(b);
+		return c;
+	}
+	//method for n square
+	public static double sqn(Scanner n){
+		double a = n.nextDouble();
+		double b = n.nextDouble();
+		double c = (double) Math.pow(a, 1/b);
+		return c;
+	}
+	public static double radtodeg(Scanner n){
+		double a = n.nextDouble();
+		double c = a * (180/PI);
+		return c;
+	}
+	public static double degtorad(Scanner n){
+		double a = n.nextDouble();
+		double c = a * (PI/180);
 		return c;
 	}
 }
