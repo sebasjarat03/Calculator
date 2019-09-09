@@ -3,7 +3,10 @@ public class Main{
 	public static final double PI = Math.PI;
 	public static double[] Memory = new double[10];
 		
-	
+	/**
+	*<p>Description:<p> This is the main method, is to select what mode you want and uses a boolean as centinel. <br>
+	*<p>Pos:<p> It makes the calculator work by calling the structure method. <br>
+	*/
 	
 	public static void main(String args[]){
 		Scanner str = new Scanner(System.in);
@@ -29,6 +32,13 @@ public class Main{
 	}
 		
 		//structure method
+		/**
+		*<p>Description:<p> This is the method to choose what mode of the calculator you want to use and has the structure of the basic operations.<br>
+		*<p>Pos:<p> This method do all the basic operations, works to do the operation by operation mode and the operations flow mode, also saves the results in the memory. <br>
+		*@param str Receives a Scanner of strings
+		*@param flows Is the boolean that indicates in which mode is the calculator
+		*@param n Receives a Scanner of numbers 
+		*/
 	public static void structure(Scanner str, boolean flows, Scanner n){
 		double num1 = 0;
 		double result = 0;
@@ -102,6 +112,15 @@ public class Main{
 	
 	}
 	
+	/**
+	*<p>Description:<p> This method receive the parser and checks if is a number or not, has the switch with all the functions' cases. <br>
+	*<p>Pos:<p> This method checks if the string in the parser is a number and gives you back the number, if is not a number, then it checks if its a function and what function is
+	*and gives you back the result of the function. <br>
+	*@param parser Is the scanner that receives the number or function and then parse it into a number or checks what function is.
+	*@param str Is a scanner for strings.
+	*@param n Is a scanner for numbers and its used in each method of the functions.
+	*@return num Gives back the parsed number or tha result of the functions.
+	*/
 		//functions method
 	public static double funcs(String parser, Scanner str, Scanner n){
 		double num = 0;
@@ -114,6 +133,7 @@ public class Main{
 			isANum = false;
 		}
 		if (!isANum){
+			parser = parser.toLowerCase();
 			switch(parser){
 				case "sin":
 						num = sin(n);
@@ -154,11 +174,19 @@ public class Main{
 				case "degtorad":
 						num = degtorad(n);
 					break;
+				default:
+						System.out.println("Invalid function!!");
+					break;
 			}
 		}
 		return num;
 	}
-	
+	/**
+	*<p>Description:<p> This method shows the memory's list and asks you to choose one.<br>
+	*<p>Pos:<p> With this method you select the number in memory's list and it gives you back the number.<br>
+	*@param str Is a scanner that receives the number of the position in the memory's array. str != null. str !="".
+	*@return num1 Gives back the number in the position of the array that the user had selected.
+	*/
 		//method for mem
 	public static double mem(Scanner str){
 		for (int i=0; i<Memory.length; i++){
@@ -168,7 +196,13 @@ public class Main{
 						double num1 = Memory[mem];
 						return num1;
 	}
-		
+	/**
+	*<p>Description:<p> This method reorganize memory's list by puting the newest result in the last position and deletes the oldest one. <br>
+	*<p>Pos:<p> This method gives back the memory's array reorganized. <br>
+	*@param result Receives the result of the operations.
+	*@param Memory Receives the memory's array.
+	*@return Memory Gives back the Memory's array reorganized.
+	*/
 		
 		//method to organize the mem
 	public static double[] MemoryOrganizator(double result, double[] Memory){
@@ -247,7 +281,9 @@ public class Main{
 	}
 	//method for power
 	public static double pow(Scanner n){
+		System.out.print("Number: ");
 		double a = n.nextDouble();
+		System.out.print("Exponent: ");
 		double b = n.nextDouble();
 		double c = 1;
 		for(int i= 1; i<=b; i++){
@@ -272,23 +308,29 @@ public class Main{
 	}
 	//method for log n-base
 	public static double logn(Scanner n){
+		System.out.print("Number: ");
 		double a = n.nextDouble();
+		System.out.print("Base: ");
 		double b = n.nextDouble();
 		double c = Math.log10(a)/Math.log10(b);
 		return c;
 	}
 	//method for n square
 	public static double sqn(Scanner n){
+		System.out.print("base: ");
 		double a = n.nextDouble();
+		System.out.print("Exponent: ");
 		double b = n.nextDouble();
 		double c = (double) Math.pow(a, 1/b);
 		return c;
 	}
+	//method to convert radians to degrees
 	public static double radtodeg(Scanner n){
 		double a = n.nextDouble();
 		double c = a * (180/PI);
 		return c;
 	}
+	//method to convert degrees to radians
 	public static double degtorad(Scanner n){
 		double a = n.nextDouble();
 		double c = a * (PI/180);
