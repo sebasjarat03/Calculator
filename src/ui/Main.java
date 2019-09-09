@@ -95,7 +95,8 @@ public class Main{
 				num1 = result;
 			}
 			else {
-				System.out.println("\nDo you want to do another operation? \ny- yes \nn- no");
+				System.out.println("Changing to operation by operation mode.");
+				System.out.println("\nDo you want to do another operation? \ny- yes \nn- no \n#- come back to operations flow.");
 				response = str.nextLine().charAt(0);
 				if (response == 'n'){
 					break;
